@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-top: 20px;
+        }
+
+        .post {
+            background-color: #fff;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h3 {
+            color: #04AA6D;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #555;
+        }
+
+        a {
+            color: #04AA6D;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+{% extends 'blog/base.html' %}
+{% block title %}My Blog - Home{% endblock %}
+
+{% block content %}
+
+
+    {% for post in posts %}
+        <div class="post">
+            <h3><a href="{% url 'view_post' post.id %}">{{ post.title }}</a></h3>
+            <p>{{ post.content|truncatewords:5 }} <a href="{% url 'view_post' post.id %}">Read more</a>
+            <p>Published on: {{ post.pub_date }}</p>
+            <a href="{% url 'delete_post' post.id %}">Delete Post</a>
+        </div>
+    {% empty %}
+        <p>No posts available.</p>
+    {% endfor %}
+{% endblock %}
+</body>
+</html>

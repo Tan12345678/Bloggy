@@ -1,9 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Test</title>
+    
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -23,8 +23,7 @@
             padding: 20px;
             margin: 20px;
             border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
+            box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
 
         h3 {
             color: #04AA6D;
@@ -48,10 +47,7 @@
 <body>
 {% extends 'blog/base.html' %}
 {% block title %}My Blog - Home{% endblock %}
-
 {% block content %}
-
-
     {% for post in posts %}
         <div class="post">
             <h3><a href="{% url 'view_post' post.id %}">{{ post.title }}</a></h3>

@@ -1,4 +1,5 @@
 <!-- blog/templates/blog/login.html -->
+
 {% extends 'blog/base.html' %}
 
 {% block title %}Login{% endblock %}
@@ -50,4 +51,7 @@
     {{ form.password.label_tag }} {{ form.password }}
     <button type="submit">Login</button>
 </form>
+    {% if myflag %}
+        <p>Please Login To continue</p>
+    {% endif %}
 {% endblock %}

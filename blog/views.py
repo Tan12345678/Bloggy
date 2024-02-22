@@ -24,6 +24,7 @@ from .models import Post
 from .forms import PostForm
 @login_required(login_url='login')
 def create_post(request):
+    myflag=True
     if request.method == 'POST':
         form = PostForm(request.POST)
         if form.is_valid():
@@ -31,6 +32,8 @@ def create_post(request):
             post.pub_date = timezone.now()  # Set pub_date to the current date and time
             post.save()
             return redirect('index')
+        else:
+            return render (request,'blog/login.html',{'myflag' : myflag})
     else:
         form = PostForm()
 
